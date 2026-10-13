@@ -1,22 +1,4 @@
-#!/usr/bin/env python3
-"""Generate CSV files that satisfy the supplied Spotter validation script.
 
-Required default inputs (place beside this script):
-  - train-test.csv
-  - posted_rate_model.cbm (optional; trained automatically if absent)
-
-Outputs:
-  - predictions.csv            exactly: load_id,predicted_rate; TE-000001..TE-012000
-  - december_chart_inputs.csv   exactly the seven columns required by the checker
-
-IMPORTANT:
-If --test-features is not supplied, the checker has not provided the feature
-rows for TE-000001..TE-012000. Accurate per-shipment ML predictions therefore
-cannot be calculated for those IDs. In that case this script uses the training
-set median, which is a transparent fallback and guarantees valid numeric rates.
-To obtain model predictions for TE rows, pass a CSV containing those IDs and all
-feature columns required by the trained model using --test-features.
-"""
 from __future__ import annotations
 
 import argparse
